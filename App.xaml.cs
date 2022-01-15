@@ -13,8 +13,9 @@ public partial class App : Application
     public App()
 	{
 		InitializeComponent();
+        InitSupabase();
 
-		MainPage = new MainPage();
+        MainPage = new SignInPage();
 	}
 
     async void InitSupabase()
@@ -26,16 +27,9 @@ public partial class App : Application
             SessionDestroyer = SessionDestroyer
         };
 
-        Client.Initialize("https://mmkiepvuoiuldzrtknee.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MTc0MzcxOCwiZXhwIjoxOTU3MzE5NzE4fQ.Z-PnjrFdhODjqwmEInuIw6MnpT6DkgXWPBeH910TQ0E", options);
-
-        if (Client.Instance.Auth.CurrentSession == null)
-        {
-            //await Client.Instance.Auth.SignIn(Environment.GetEnvironmentVariable("email"), Environment.GetEnvironmentVariable("password"));
-        }
-
-        Client.Instance.Realtime.Connect();
-
-        //MainPage = new NavigationPage(new ChannelListPage());
+        Client.Initialize("https://mmkiepvuoiuldzrtknee.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MTc0MzcxOCwiZXhwIjoxOTU3MzE5NzE4fQ.Z-PnjrFdhODjqwmEInuIw6MnpT6DkgXWPBeH910TQ0E", options, (client) => {
+            Debug.Print("Supabase Initialize Done");
+        });
     }
 
     internal Task<bool> SessionPersistor(Session session)
