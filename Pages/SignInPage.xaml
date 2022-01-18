@@ -3,11 +3,20 @@
              x:Class="MauiUserManagement.SignInPage"
              Title="Sign In"
              BackgroundColor="{DynamicResource SecondaryColor}">
-    <StackLayout Margin="20" VerticalOptions="StartAndExpand">
-        <Label Text="Email" />
-        <Entry x:Name="EmailEntry"
-               TextColor="Black"
-               />
-        <Button Text="Sign In" Clicked="OnSignInClicked" />
+    <StackLayout VerticalOptions="StartAndExpand" Padding="10">
+        <Entry x:Name="EmailEntry" 
+               Placeholder="Email"            
+               Text="{Binding Email}"></Entry>
+        <Entry Placeholder="Password" 
+               IsPassword="True"
+               Text="{Binding Password}"></Entry>
+        <Entry Placeholder="Confirm Password" 
+               IsPassword="True"
+               Text="{Binding PasswordConfirm}"></Entry>
+        <Label Text="Already have account? Sign In" 
+               TextColor="{DynamicResource PrimaryColor}" 
+               Padding="0,20,0,20"></Label>
+        <Button Text="Sign In"
+                Clicked="OnSignInClicked"></Button>
     </StackLayout>
 </ContentPage>
